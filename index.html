@@ -5,10 +5,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue App</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        button {
+            all: unset;
+            font-size: 1.5rem;
+            font-weight: normal;
+            text-transform: capitalize;
+            padding: 5px 20px;
+            cursor: pointer;
+            border-radius: 1rem;
+        }
+        #app {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+        button.green {
+            background-color: #53e253;
+            color: #080;
+        }
+
+        button.red {
+            background-color: #e25353;
+            color: #ffffff;
+        }
+    </style>
 </head>
 
 <body>
+    <div id="app">
+        <button :class="is_active ? 'green' : 'red' " @click="toggle">{{action}}</button>
+    </div>
+    <script>
+        const { createApp } = Vue;
 
+        createApp({
+            data() {
+                return {
+                    action: 'Action',
+                    btnClass: "red",
+                    is_active : false
+                }
+            },
+            methods: {
+                toggle() {
+                    this.is_active = ! this.is_active;
+
+                    this.is_active ? this.btnClass = "green" : this.btnClass = "red"
+                }
+            },
+        }).mount('#app')
+    </script>
 </body>
 
 </html>
