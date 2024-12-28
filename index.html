@@ -5,10 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue App</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 
 <body>
 
+    <div id="app">
+        <h3>{{message}}</h3>
+    </div>
+    <script>
+          const { createApp } = Vue
+
+          createApp({
+            data() {
+                return {
+                    message :"my name is mohammed"
+                }
+            },
+          }).mount('#app')
+    </script>
 </body>
 
 </html>
